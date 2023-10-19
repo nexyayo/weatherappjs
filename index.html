@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pogodynka</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" type="image/png" href="./imgs/favicon.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+    <canvas id="rainCanvas"></canvas>
+    <section>
+        <div class="square_box box_three"></div>
+        <div class="square_box box_four"></div>
+    </section>
+    <div class="container mt-5">
+        <div class="col-sm-12">
+            <div class="alert fade alert-simple alert-success alert-dismissible text-left font__family-montserrat font__size-16 font__weight-light brk-library-rendered rendered show" id="success-alert" style="display: none;" onclick="deleteNoti()">
+                <i class="start-icon far fa-check-circle faa-tada animated"></i>
+                <strong class="font__weight-semibold">Sukces!</strong> Udało ci się wygenerować pogodę dla <span id="success-city-name"></span>.
+            </div>
+        </div>
+
+        <div class="col-sm-12">
+            <div class="alert fade alert-simple alert-success alert-dismissible text-left font__family-montserrat font__size-16 font__weight-light brk-library-rendered rendered show" id="success-alert-delete" style="display: none;" onclick="deleteNoti()">
+                <i class="start-icon far fa-check-circle faa-tada animated"></i>
+                <strong class="font__weight-semibold">Sukces!</strong> Pomyślnie usunięto pogodę.
+            </div>
+        </div>
+        
+        <div class="col-sm-12">
+            <div class="alert fade alert-simple alert-danger alert-dismissible text-left font__family-montserrat font__size-16 font__weight-light brk-library-rendered rendered show" role="alert" data-brk-library="component__alert" id="error-alert" style="display: none;" onclick="deleteNoti()">
+                <i class="start-icon far fa-times-circle faa-pulse animated"></i>
+                <strong class="font__weight-semibold">Błąd!</strong> Podałeś nieprawidłowe dane, proszę spróbuj ponownie.
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <h1>Pogodynka</h1>
+        <div class="user-interface">
+            <div class="user-container">
+                <h3>Wybierz miasto</h3>
+                <input type="string" name="input-city" id="input-city" placeholder="Wpisz nazwę miasta">
+                <button onclick="getData()" id="button-city">Generuj</button>
+            </div>
+        </div>
+ 
+        <div class="response">
+            <div class="response-ui">
+                <div class="response-content">
+                    <div class="title">
+                        <div class="response-title-ui">
+                            <div class="content">
+                                <h2 id="response-title">Miasto</h2>
+                                <h2 id="response-title2">Miasto</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="temperature">
+                        <span id="response-weather"></span>
+                        <span id="response-temperature">[ Temperatura ]</span>
+                        <p id="response-temperature-desc">( Pogoda )</p>
+                    </div>
+                    <div class="response-row">
+                        <div class="wilgotnosc">
+                            <img  id="wilgotnosc-img" src="./imgs/wilgotnosc.png">
+                            <span id="response-text">Wilgotność</span>
+                            <span id="response-wilgotnosc"></span>
+                        </div>
+                        <div class="wind">
+                            <img  id="wind-img" src="./imgs/wind.png">
+                            <span id="response-text">Prędkość wiatru</span>
+                            <span id="response-wind"></span>
+                        </div>
+                        <div class="see">
+                            <img  id="see-img" src="./imgs/widocznosc.png">
+                            <span id="response-text">Widoczność</span>
+                            <span id="response-see"></span>
+                        </div>
+                        <div class="country">
+                            <img  id="see-img" src="./imgs/country.png">
+                            <span id="response-text">Kraj</span>
+                            <span id="response-country"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="calendar">
+                    <div class="calendar-ui">
+                        <div class="day">
+                            <span class="day-weather-icon" id="dayaftertomorrow-weather-icon">🌙</span>
+                            <div class="day-title">Dzisiaj</div>
+                            <span class="day-date" id="today-date">[ Data ]</span>
+                            <span class="day-temperature" id="today-temperature">[ Temperatura ]</span>
+                        </div>
+                        <div class="day">
+                            <span class="day-weather-icon" id="dayaftertomorrow-weather-icon">🌙</span>
+                            <div class="day-title">Jutro</div>
+                            <span class="day-date" id="tomorrow-date">[ Data ]</span>
+                            <span class="day-temperature" id="tomorrow-temperature">[ Temperatura ]</span>
+                        </div>
+                        <div class="day">
+                            <span class="day-weather-icon" id="dayaftertomorrow-weather-icon">🌙</span>
+                            <div class="day-title">Pojutrze</div>
+                            <span class="day-date" id="dayaftertomorrow-date">[ Data ]</span>
+                            <span class="day-temperature" id="dayaftertomorrow-temperature">[ Temperatura ]</span>
+                        </div>
+                    </div>
+                </div>
+                <button id="button-delete" onclick="deleteResponse()">Usuń</button>
+            </div>
+        </div>
+    </div>
+ 
+    <script src="./app.js"></script>
+</body>
+</html>
