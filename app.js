@@ -95,6 +95,7 @@ async function getData() {
     try {
         const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${userInput}&appid=943f9ce8428efbed394e81e1fbb8217f&units=metric`);
         const data = await response.json();
+        const rainParticles = document.getElementById("rainCanvas");
         
         
         console.log(data)
@@ -103,6 +104,16 @@ async function getData() {
         cityName.textContent = data.name;
         cityName2.textContent = data.name;
         weather.textContent = `${getWeatherIcon(data.weather[0].icon)}`
+
+        if(weather.textContent == "🌧️" || weather.textContent == "🌧️🌙" || weather.textContent == "🌦️" )
+        {
+            rainParticles.style.display = 'block';
+        }
+        else
+        {
+            rainParticles.style.display = 'none';
+        }
+
         temperature.textContent = `${data.main.temp} ℃`;
         humidity.textContent = `${data.main.humidity}%`;
         wind.textContent = `${data.wind.speed} m/s`;
@@ -499,3 +510,4 @@ const countryDictionary = {
     
     createDrops();
     animate();
+    

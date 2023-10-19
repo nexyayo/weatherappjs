@@ -19,7 +19,7 @@ body {
 
     font-family: 'Poppins', sans-serif;
 }
-canvas {
+#rainCanvas {
   position: absolute;
   display: none;
 }
