@@ -90,12 +90,16 @@ async function getData() {
     const responseDiv = document.querySelector(".response");
     const country = document.getElementById("response-country");
     const weatherDescription = document.getElementById("response-temperature-desc");
+    const cloudParticles = document.getElementById("cloudsCanvas");
+    const rainParticles = document.getElementById("rainCanvas");
     responseDiv.style.display = 'block';
+    cloudParticles.style.display = 'none';
+    rainParticles.style.display = 'none';
+    
 
     try {
         const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${userInput}&appid=943f9ce8428efbed394e81e1fbb8217f&units=metric`);
         const data = await response.json();
-        const rainParticles = document.getElementById("rainCanvas");
         
         
         console.log(data)
@@ -105,13 +109,17 @@ async function getData() {
         cityName2.textContent = data.name;
         weather.textContent = `${getWeatherIcon(data.weather[0].icon)}`
 
-        if(weather.textContent == "🌧️" || weather.textContent == "🌧️🌙" || weather.textContent == "🌦️" )
+        if(weather.textContent == "🌧️" || weather.textContent == "🌧️🌙" || weather.textContent == "🌦️" || weather.textContent == "🌦️🌙")
         {
             rainParticles.style.display = 'block';
+        }
+        else if (weather.textContent == "☁️") {
+            cloudParticles.style.display = 'block';
         }
         else
         {
             rainParticles.style.display = 'none';
+            cloudParticles.style.display = 'none';
         }
 
         temperature.textContent = `${data.main.temp} ℃`;
@@ -152,9 +160,13 @@ function deleteNoti() {
 }
 
 async function deleteResponse() {
-    console.log("Deleted");
+    const rainParticles = document.getElementById("rainCanvas");
     const responseDiv = document.querySelector(".response");
+    const cloudParticles = document.getElementById("cloudsCanvas");
     responseDiv.style.display = 'none';
+
+    rainParticles.style.display = 'none';
+    cloudParticles.style.display = 'none';
 
     successAlert.style.display = 'none';
     errorAlert.style.display = 'none';

@@ -428,12 +428,12 @@ margin-top: 20px;
 .calendar-ui {
   display: flex;
   flex-direction: row;
-  background-color: rgba(45, 92, 248, 0.603);
+  background-color: rgba(78, 107, 204, 0.836);
   gap: 50px;
-  box-shadow: 1px 1px 1px black;
+  box-shadow: 1px 0px 2px rgba(5, 5, 5, 0.26);
   width: 80%;
-  justify-content: center;
   color: white;
+  justify-content: center;
 
   border-radius: 10px;
 
@@ -711,3 +711,60 @@ margin-top: 20px;
 }
 
 /* PARTICLES  */
+.cloudsCanvas {
+  display: none;
+}
+
+/* Cloud Animation */
+@keyframes moveCloud {
+  from {
+    transform: translateX(-100%); /* Start from the left side of the container */
+  }
+  to {
+    transform: translateX(100%); /* Move to the right side of the container */
+  }
+}
+
+/* Apply the animation to cloud images */
+img[id^="cloud"] {
+  position: absolute;
+  animation: moveCloud 30s linear infinite; /* Adjust the duration as needed */
+
+  /* Adjust the initial positions for each cloud */
+  top: 20px; /* Adjust these values as per your desired positions */
+  left: 10%; /* Adjust these values as per your desired positions */
+  width: 200px; /* Adjust these values as per your desired sizes */
+}
+
+/* Add CSS rules for each cloud's position, similar to the above code */
+#cloud2 {
+  top: 500px;
+  left: 30%;
+  width: 800px;
+  height: 500px;
+}
+
+#cloud3 {
+  top: 80px;
+  left: 50%;
+  width: 180px;
+}
+
+#cloud4 {
+  top: 120px;
+  left: 70%;
+  width: 160px;
+}
+
+#cloud5 {
+  top: 120px;
+  left: 70%;
+  width: 160px;
+}
+
+#cloud6 {
+  top: 300px;
+  left: 70%;
+  width: 160px;
+}
+
